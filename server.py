@@ -61,10 +61,10 @@ def call():
     elif to.startswith("client:"):
         # Client -> Client
         resp.dial(callerId=from_caller).client(to[7:])
-else:
-    # Client -> PSTN
-    resp.dial(to, callerId=CALLER_PHONE)
-    return str(resp)
+    else:
+        # Client -> PSTN
+        resp.dial(to, callerId=CALLER_PHONE)
+        return str(resp)
 
 @app.route('/placeCall', methods=['GET', 'POST'])
 def placeCall():
